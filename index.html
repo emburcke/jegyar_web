@@ -66,41 +66,48 @@
         <div class="inputs">
             <!-- Duplicate or remove input fields as needed -->
             <div class="input-group">
-                <label for="input1">Normál jegy 3500FT/db</label>
+                <label for="input1">Normál jegy 3500 Ft/db</label>
                 <input type="number" id="input1" placeholder="0" min="0" max="9" />
             </div>
             <div class="input-group">
-                <label for="input2">Diák jegy 2700FT/db</label>
+                <label for="input2">Diák jegy 2700 Ft/db</label>
                 <input type="number" id="input2" placeholder="0" min="0" max="9"/>
+            </div>
+            <div class="input-group">
+                <label for="input3">Bérlet 7500 Ft/db</label>
+                <input type="number" id="input3" placeholder="0" min="0" max="9"/>
             </div>
             <!-- Add more input groups here if needed -->
         </div>
         <div class="result">
 			<p>Öszesen: </p>
-            <span id="output">0 FT</span>
+            <span id="output">0 Ft</span>
         </div>
     </div>
     <script>
         const input1 = document.getElementById('input1');
         const input2 = document.getElementById('input2');
+        const input3 = document.getElementById('input3');
         const output = document.getElementById('output');
 
         // Compute function: adjust logic as needed
         function Compute() {
             const felnott = Number(input1.value) || 0;
             const gyerek = Number(input2.value) || 0;
-            const result = felnott * 3500 + gyerek * 2700; // default sum logic
+            const berlet = Number(input3.value) || 0;
+            const result = felnott * 3500 + gyerek * 2700 + berlet * 7500;
             displayResult(result);
         }
 
         function displayResult(value) {
-            output.textContent = value + ' FT';
+            output.textContent = value + ' Ft';
         }
 
         // Initialize automatic computation on input change
         function initCalculator() {
             input1.addEventListener('input', Compute);
             input2.addEventListener('input', Compute);
+            input3.addEventListener('input', Compute);
             // Trigger initial computation
             Compute();
         }
